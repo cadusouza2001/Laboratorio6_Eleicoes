@@ -4,11 +4,14 @@ import eleicoes.Candidato;
 import eleicoes.Eleicao;
 import eleicoes.Partidos;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UI {
     public static void main(String[] args) {
         Eleicao eleicaoBrasileira = new Eleicao();
+        Eleicao eleicaoOrdenadaPorVotos = new Eleicao();
+        Eleicao eleicaoOrdenadaPorIdade = new Eleicao();
 
         eleicaoBrasileira.adicionaCandidato("Josney", Partidos.UNI, 20, 93);
         eleicaoBrasileira.adicionaCandidato("Josias", Partidos.DUNI, 30, 75);
@@ -16,13 +19,13 @@ public class UI {
         eleicaoBrasileira.adicionaCandidato("Jonas", Partidos.SALAME, 40, 81);
         eleicaoBrasileira.adicionaCandidato("Jamur", Partidos.MINGUE, 15, 127);
 
-        Eleicao eleicaoOrdenadaPorVotos = eleicaoBrasileira;
+        eleicaoOrdenadaPorVotos.setCandidatos(new ArrayList<>(eleicaoBrasileira.getCandidatos()));
         eleicaoOrdenadaPorVotos.ordenaPorVotos();
-        Eleicao eleicaoOrdenadaPorIdade = eleicaoBrasileira;
-        eleicaoOrdenadaPorVotos.ordenaPorIdade();
+
+        eleicaoOrdenadaPorIdade.setCandidatos(new ArrayList<>(eleicaoBrasileira.getCandidatos()));
+        eleicaoOrdenadaPorIdade.ordenaPorIdade();
 
         Scanner input = new Scanner(System.in);
-
 
         int resposta = 0;
         do {
@@ -52,19 +55,19 @@ public class UI {
                     break;
                 case 2:
                     System.out.println("Candidato mais velho:");
-                    System.out.println(eleicaoOrdenadaPorIdade.getUltimoCandidato());
+                    System.out.println(eleicaoOrdenadaPorIdade.getUltimoDaLista());
                     break;
                 case 3:
                     System.out.println("Candidato mais novo:");
-                    System.out.println(eleicaoOrdenadaPorIdade.getPrimeiroCandidato());
+                    System.out.println(eleicaoOrdenadaPorIdade.getPrimeiroDaLista());
                     break;
                 case 4:
                     System.out.println("Candidato com mais votos:");
-                    System.out.println(eleicaoOrdenadaPorVotos.getPrimeiroCandidato());
+                    System.out.println(eleicaoOrdenadaPorVotos.getUltimoDaLista());
                     break;
                 case 5:
                     System.out.println("Candidato com menos votos:");
-                    System.out.println(eleicaoOrdenadaPorVotos.getUltimoCandidato());
+                    System.out.println(eleicaoOrdenadaPorVotos.getPrimeiroDaLista());
                     break;
                 case 6:
                     System.out.println("Total de votos:");

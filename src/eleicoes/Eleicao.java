@@ -29,24 +29,28 @@ public class Eleicao {
         return candidatos;
     }
 
-    public int getTotalVotos(){
-        int soma=0;
+    public void setCandidatos(List<Candidato> candidatos) {
+        this.candidatos = (ArrayList<Candidato>) candidatos;
+    }
+
+    public int getTotalVotos() {
+        int soma = 0;
         for (Candidato candidato : candidatos) {
-            soma+=candidato.getVotos();
+            soma += candidato.getVotos();
         }
         return soma;
     }
 
-    public double getMediaVotos(){
-        return (double) (getTotalVotos())/candidatos.size();
+    public double getMediaVotos() {
+        return (double) (getTotalVotos()) / candidatos.size();
     }
 
-    public Candidato getPrimeiroCandidato(){
+    public Candidato getPrimeiroDaLista() {
         return candidatos.get(0);
     }
 
-    public Candidato getUltimoCandidato(){
-        return candidatos.get(candidatos.size()-1);
+    public Candidato getUltimoDaLista() {
+        return candidatos.get(candidatos.size() - 1);
     }
 
 }
